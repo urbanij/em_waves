@@ -9,7 +9,7 @@ setup(
     scripts=[],
     url='https://github.com/urbanij/em_waves',
     license='LICENSE.txt',
-    description='Simulation of electromagnetic wave hitting an interface with a different medium.',
+    description="Simulation of electromagnetic wave hitting an interface with a different medium.",
     long_description=open('README.md').read(),
     long_description_content_type="text/markdown",
     install_requires=[

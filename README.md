@@ -1,9 +1,7 @@
 ## em-waves
 
 
-
 ```python
-
 from em_waves import Medium, Sine, Gaussian, Rect
 
 f_0     = 1.8e9 # [Hz]
@@ -21,4 +19,3 @@ wave.print_data()
 wave.show()
 
 ```
-

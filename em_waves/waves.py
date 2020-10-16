@@ -183,14 +183,18 @@ class Wave:
             return (line1,line2,line3,line4,)
 
         anim = animation.FuncAnimation(fig, animate, frames=len(t), interval=40, blit=True)
+        
+        plt.show()
 
-        if input("Save plot animation? (y/[n])? ") == 'y': 
-            ### Save animation
-            Writer = animation.writers['ffmpeg']
-            writer = Writer(fps=15, metadata=dict(artist='fu'), bitrate=1800)
-            anim.save(f'media/wave{time.time()}.mp4', writer=writer, dpi=200)
-        else:
-            plt.show()
+    
+    def save(self, t, E1_i, ylim):
+        raise Exception("Unimplemented")
+        self.show(t, E1_i, ylim)
+        ### Save animation
+        Writer = animation.writers['ffmpeg']
+        writer = Writer(fps=15, metadata=dict(artist='fu'), bitrate=1800)
+        anim.save(f'media/wave{time.time()}.mp4', writer=writer, dpi=200)
+
 
 
 class Sine(Wave):
