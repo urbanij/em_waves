@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='em_waves',
-    version='0.0.1',
+    version='0.0.2',
     author='Francesco Urbani',
     author_email='francescourbanidue@gmail.com',
     packages=['em_waves'],
