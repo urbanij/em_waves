@@ -14,6 +14,7 @@ from em_waves import Medium, Sine, Gaussian, Rect
 
 SHOW_PLOT = True
 
+
 def proc_func(wave):
     print (wave)
     wave.show()
@@ -30,6 +31,7 @@ def print_recap(*args):
 
 def main():
     print("Insert data when prompted, if skipped default value will be used.")
+
     f_0 = float(input("Insert frequency in GHz: ") or 1.8)
 
     ε_r_1 = float(input("Insert ε_r_1: ") or 1.0)
@@ -55,20 +57,24 @@ def main():
     sine.print_data()
     
 
+        
     if SHOW_PLOT:
-        p1 = multiprocessing.Process(target=proc_func, args=(sine,))
-        p2 = multiprocessing.Process(target=proc_func, args=(gaussian,))
-        p3 = multiprocessing.Process(target=proc_func, args=(rect,))
+        
+        # display plot windows in multithreading, or rather in multiprocessing since matplotlib crashes when multithreaded.
 
-        p1.start()
-        p2.start()
-        p3.start()
+        d = {0: sine, 1: gaussian, 2: rect}    
+        p = []
+        
+        for i in range(len(d)):
+            p.append( multiprocessing.Process(target=proc_func, args=(d[i],)) )
 
-        p1.join()
-        p2.join()
-        p3.join()
+        for proc in p:
+            proc.start()
+
+        for proc in p:
+            proc.join()
+
 
 
 if __name__ == '__main__':
     main()
-    
